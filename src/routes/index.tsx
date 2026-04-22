@@ -1,26 +1,223 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { Layout } from "@/components/Layout";
+import { Award, Package, Truck, ArrowRight, Hammer, Wrench, ClipboardList } from "lucide-react";
+import heroImg from "@/assets/hero-construction.jpg";
+
+const categoryHighlights = [
+  {
+    title: "Concrete Admixtures",
+    desc: "Accelerators, superplasticizers, water reducers, retarders and more for superior concrete performance.",
+    image: "https://www.redwop.net/wp-content/uploads/2024/11/Accelerator.jpg",
+  },
+  {
+    title: "Tile Adhesive & Grout",
+    desc: "High-strength tile fixing solutions for walls, floors, and heavy-duty applications.",
+    image: "https://www.redwop.net/wp-content/uploads/2024/08/media_20241003_160242_8329776699937143088.png",
+  },
+  {
+    title: "Waterproofing Chemicals",
+    desc: "Liquid membranes, crystalline coatings, cement-based systems for lasting water protection.",
+    image: "https://www.redwop.net/wp-content/uploads/2024/11/Liquid-Membrane-Waterproofing.jpg",
+  },
+  {
+    title: "Protective Coatings",
+    desc: "Epoxy coatings, anti-corrosive primers, floor hardeners, and more for industrial protection.",
+    image: "https://www.redwop.net/wp-content/uploads/2024/11/Corrosion-Inhibiting-Admixture.jpg",
+  },
+];
+
+const trustBadges = [
+  { Icon: Award, title: "Authorized Redwop Dealer", desc: "Genuine, certified products direct from the manufacturer." },
+  { Icon: Package, title: "25+ Construction Chemicals", desc: "A wide product range always ready in stock." },
+  { Icon: Truck, title: "Timely Site Delivery", desc: "Dependable supply to contractors across Kutch." },
+];
+
+const services = [
+  { Icon: Hammer, title: "Construction Material Supply", desc: "Cement, sand, aggregates and related materials for residential and commercial projects." },
+  { Icon: Wrench, title: "Repair & Maintenance Solutions", desc: "Crack fillers, polymer repair mortars, and rehabilitation products for existing structures." },
+  { Icon: ClipboardList, title: "Project-Based Supply Services", desc: "Customized material supply for small and large-scale construction projects." },
+];
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Neehal Trade and Infra — Authorized Redwop Dealer in Gandhidham, Kutch" },
+      { name: "description", content: "Authorized dealer of Redwop Chemicals in Gandhidham, Kutch. Waterproofing, admixtures, tile adhesives, coatings and construction materials for builders and contractors." },
+      { property: "og:title", content: "Neehal Trade and Infra — Authorized Redwop Dealer" },
+      { property: "og:description", content: "Your trusted construction chemical partner in Kutch. Supplying waterproofing, admixtures, adhesives and coatings." },
+    ],
+  }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function HomePage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+    <Layout>
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-charcoal text-charcoal-foreground">
+        <img
+          src={heroImg}
+          alt=""
+          width={1920}
+          height={1080}
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        />
+        <div className="absolute inset-0 hero-overlay" />
+        <div className="absolute inset-0 bg-grid opacity-30" />
 
-function Index() {
-  return <PlaceholderIndex />;
+        <div className="container-tight relative py-24 md:py-36">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-3xl"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand/50 bg-brand/15 text-white text-xs font-semibold uppercase tracking-wider mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
+              Authorized Redwop Dealer · Gandhidham
+            </div>
+            <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-balance">
+              Your Trusted Construction Chemical Partner in Kutch
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+              Authorized dealer of <span className="text-brand font-semibold">Redwop Chemicals</span> — supplying high-quality waterproofing, adhesives, admixtures, coatings, and more to contractors, builders, and projects across the region.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                to="/products"
+                className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-brand-foreground px-6 py-3.5 rounded-md font-semibold transition-all shadow-elegant"
+              >
+                Explore Products
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 text-white px-6 py-3.5 rounded-md font-semibold transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* TRUST BADGES */}
+      <section className="bg-muted/50 border-y border-border">
+        <div className="container-tight py-12 grid gap-6 md:grid-cols-3">
+          {trustBadges.map(({ Icon, title, desc }, i) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              className="flex items-start gap-4"
+            >
+              <div className="shrink-0 h-12 w-12 rounded-md bg-brand/10 text-brand flex items-center justify-center">
+                <Icon className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="font-display font-bold text-lg text-charcoal">{title}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* PRODUCT CATEGORIES */}
+      <section className="py-20 md:py-28">
+        <div className="container-tight">
+          <div className="max-w-2xl mb-12">
+            <span className="text-brand font-semibold uppercase text-xs tracking-wider">What we supply</span>
+            <h2 className="font-display font-extrabold text-3xl md:text-5xl text-charcoal mt-3 tracking-tight text-balance">
+              The complete Redwop product range
+            </h2>
+            <p className="mt-4 text-muted-foreground text-lg">
+              From foundation to finish — every chemical you need, sourced from a trusted ISO-certified manufacturer.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {categoryHighlights.map((cat, i) => (
+              <motion.div
+                key={cat.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <Link
+                  to="/products"
+                  className="group block bg-white border border-border rounded-lg overflow-hidden hover:shadow-elegant hover:border-brand/40 transition-all h-full"
+                >
+                  <div className="aspect-square bg-muted overflow-hidden">
+                    <img
+                      src={cat.image}
+                      alt={cat.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display font-bold text-lg text-charcoal group-hover:text-brand transition-colors">{cat.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{cat.desc}</p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES STRIP */}
+      <section className="bg-charcoal text-charcoal-foreground py-20 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-30" />
+        <div className="container-tight relative">
+          <div className="max-w-2xl mb-12">
+            <span className="text-brand font-semibold uppercase text-xs tracking-wider">Our services</span>
+            <h2 className="font-display font-extrabold text-3xl md:text-5xl mt-3 tracking-tight text-balance">
+              More than a supplier
+            </h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {services.map(({ Icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="bg-white/5 border border-white/10 rounded-lg p-6 hover:bg-white/10 hover:border-brand/40 transition-all"
+              >
+                <div className="h-12 w-12 rounded-md bg-brand text-brand-foreground flex items-center justify-center mb-5">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-display font-bold text-xl mb-2">{title}</h3>
+                <p className="text-white/70 text-sm leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BANNER */}
+      <section className="bg-brand text-brand-foreground">
+        <div className="container-tight py-16 md:py-20 flex flex-col md:flex-row items-center gap-6 md:gap-10 justify-between">
+          <h2 className="font-display font-extrabold text-2xl md:text-4xl tracking-tight max-w-2xl text-balance">
+            Need a reliable construction chemical supplier in Gandhidham? We've got you covered.
+          </h2>
+          <Link
+            to="/contact"
+            className="shrink-0 inline-flex items-center gap-2 bg-charcoal hover:bg-black text-white px-7 py-4 rounded-md font-semibold transition-all"
+          >
+            Get in Touch
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+    </Layout>
+  );
 }
