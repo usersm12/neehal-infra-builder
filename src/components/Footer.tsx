@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
+import logoImg from "@/assets/neehal-logo.jpg";
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -16,10 +17,19 @@ export function Footer() {
     <footer className="bg-charcoal text-charcoal-foreground">
       <div className="container-tight py-14 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-1">
-          <h3 className="font-display font-extrabold text-lg tracking-tight">NEEHAL TRADE AND INFRA</h3>
-          <p className="text-brand font-semibold text-xs uppercase tracking-wider mt-1">
-            Authorized Redwop Dealer
-          </p>
+          <div className="flex items-center gap-3">
+            <img
+              src={logoImg}
+              alt="Neehal Trade and Infra"
+              className="h-12 w-12 object-contain rounded-sm bg-white p-0.5 shrink-0"
+            />
+            <div className="flex flex-col leading-none">
+              <h3 className="font-display font-extrabold text-sm tracking-tight">NEEHAL TRADE AND INFRA</h3>
+              <p className="text-brand font-semibold text-[10px] uppercase tracking-wider mt-1">
+                Authorized Redwop Dealer
+              </p>
+            </div>
+          </div>
           <p className="text-sm text-white/60 mt-4 leading-relaxed">
             Authorized Dealer — Redwop Chemicals Pvt. Ltd. Serving Gandhidham and Kutch region.
           </p>
