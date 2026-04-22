@@ -21,11 +21,11 @@ export function Footer() {
             <img
               src={logoImg}
               alt="Neehal Trade and Infra"
-              className="h-12 w-12 object-contain rounded-sm bg-white p-0.5 shrink-0"
+              className="h-20 w-20 object-contain rounded-sm bg-white p-1 shrink-0"
             />
             <div className="flex flex-col leading-none">
-              <h3 className="font-display font-extrabold text-sm tracking-tight">NEEHAL TRADE AND INFRA</h3>
-              <p className="text-brand font-semibold text-[10px] uppercase tracking-wider mt-1">
+              <h3 className="font-display font-extrabold text-base tracking-tight">NEEHAL TRADE AND INFRA</h3>
+              <p className="text-brand font-semibold text-xs uppercase tracking-wider mt-1.5">
                 Authorized Redwop Dealer
               </p>
             </div>

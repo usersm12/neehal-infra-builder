@@ -9,13 +9,13 @@ export function Logo({ variant = "dark" }: { variant?: "dark" | "light" }) {
       <img
         src={logoImg}
         alt="Neehal Trade and Infra"
-        className="h-12 w-12 object-contain rounded-sm bg-white p-0.5"
+        className="h-16 w-16 sm:h-20 sm:w-20 object-contain rounded-sm bg-white p-0.5"
       />
       <div className="flex flex-col leading-none">
-        <span className={`font-display font-extrabold text-sm sm:text-base tracking-tight ${textColor}`}>
+        <span className={`font-display font-extrabold text-base sm:text-lg md:text-xl tracking-tight ${textColor}`}>
           NEEHAL TRADE AND INFRA
         </span>
-        <span className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wider mt-0.5 ${subColor}`}>
+        <span className={`text-[11px] sm:text-sm font-semibold uppercase tracking-wider mt-1 ${subColor}`}>
           Authorized Redwop Dealer
         </span>
       </div>

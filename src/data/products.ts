@@ -12,6 +12,9 @@ export type ProductCategory = {
 };
 
 const RW = "https://www.redwop.net/wp-content/uploads";
+// Unsplash stock photos for products without dedicated Redwop imagery
+const U = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&q=70`;
+import tileAdhesiveImg from "@/assets/tile-adhesive.jpg";
 
 export const productCategories: ProductCategory[] = [
   {
@@ -48,7 +51,7 @@ export const productCategories: ProductCategory[] = [
     slug: "tile-adhesive",
     intro: "High-strength tile fixing solutions for walls, floors and heavy-duty applications.",
     products: [
-      { name: "Tile Adhesive", description: "High-strength adhesive for walls and floors (IS 15477:2004).", image: `${RW}/2024/08/media_20241003_160242_8329776699937143088.png` },
+      { name: "Tile Adhesive", description: "High-strength adhesive for walls and floors (IS 15477:2004).", image: tileAdhesiveImg },
       { name: "Tile Grout", description: "Fine-finish grout for joints between tiles.", image: `${RW}/2026/01/Tile-Grout.jpg` },
       { name: "Bonding Agent", description: "Improves adhesion between old and new concrete surfaces.", image: `${RW}/2024/11/Bonding-Agent.jpg` },
     ],
@@ -60,27 +63,27 @@ export const productCategories: ProductCategory[] = [
     products: [
       { name: "Non Shrink Grout", description: "Precision grouting for equipment bases and anchor bolts.", image: `${RW}/2024/11/Non-Shrink-Grout.jpg` },
       { name: "Polymer Repair Mortar", description: "Structural repair for damaged concrete surfaces.", image: `${RW}/2026/02/Polymer-Repair-Mortar.png` },
-      { name: "Crack Filler", description: "Fast-setting filler for surface cracks in walls and floors." },
+      { name: "Crack Filler", description: "Fast-setting filler for surface cracks in walls and floors.", image: U("1581094288338-2314dddb7ece") },
       { name: "Self Leveling Flooring", description: "Smooth, self-leveling base for industrial and commercial floors.", image: `${RW}/2026/02/Self-Leveling-Flooring.png` },
-      { name: "Floor Hardener", description: "Dust-proofing and hardening for industrial concrete floors." },
+      { name: "Floor Hardener", description: "Dust-proofing and hardening for industrial concrete floors.", image: U("1565636192335-c81b4b09b7e0") },
       { name: "Light Weight Block Joint Mortar", description: "For AAC block jointing with minimal wastage.", image: `${RW}/2024/11/Light-Weight-Block-Joint-Mortar.jpg` },
       { name: "Ready Mix Plaster", description: "Factory-made plaster for consistent wall finishes.", image: `${RW}/2024/11/Ready-Mix-Plaster.jpg` },
-      { name: "Mould Release Agent", description: "Prevents concrete from sticking to formwork." },
-      { name: "Fast Plugging", description: "Instant stop to active water leaks in concrete." },
-      { name: "Polyester Anchor Grout", description: "Chemical anchoring for bolts and rebars." },
+      { name: "Mould Release Agent", description: "Prevents concrete from sticking to formwork.", image: U("1503387762-592deb58ef4e") },
+      { name: "Fast Plugging", description: "Instant stop to active water leaks in concrete.", image: U("1558618666-fcd25c85cd64") },
+      { name: "Polyester Anchor Grout", description: "Chemical anchoring for bolts and rebars.", image: U("1572981779307-38b8cabb2407") },
       { name: "Rust Converter", description: "Converts rust to stable compound before painting.", image: `${RW}/2024/11/Rust-Converter.jpg` },
       { name: "Rust Remover", description: "Removes rust from metal surfaces.", image: `${RW}/2024/11/Rust-Remover.jpg` },
       { name: "Bituminous Products", description: "Waterproofing and protection for below-grade structures.", image: `${RW}/2024/11/Bituminous-Products.jpg` },
-      { name: "Curing Compound", description: "Retains moisture in concrete for proper curing." },
-      { name: "Primer", description: "Prepares surfaces for coating adhesion." },
+      { name: "Curing Compound", description: "Retains moisture in concrete for proper curing.", image: U("1517089596392-fb9a9033e05b") },
+      { name: "Primer", description: "Prepares surfaces for coating adhesion.", image: U("1589939705384-5185137a7f0f") },
       { name: "Wall Putty", description: "Smooth base coat for interior walls before painting.", image: `${RW}/2026/01/Wall-Putty.jpg` },
-      { name: "Anti Corrosive", description: "Protection for steel structures and surfaces." },
+      { name: "Anti Corrosive", description: "Protection for steel structures and surfaces.", image: U("1518709268805-4e9042af2176") },
       { name: "Fiber Resa", description: "Polypropylene fiber for crack resistance in concrete.", image: `${RW}/2024/11/Fiber-Resa.jpg` },
       { name: "Protective Coating", description: "High-performance coatings for industrial surfaces.", image: `${RW}/2026/01/Protective-Coating.jpg` },
-      { name: "Sealant", description: "Flexible gap filling and joint sealing." },
-      { name: "Tile Cleaner", description: "Removes stains and efflorescence from tile surfaces." },
-      { name: "Epoxy Grout", description: "High-strength stain-resistant grouting for joints." },
-      { name: "Wall Putty & Paints", description: "Interior and exterior finishing solutions." },
+      { name: "Sealant", description: "Flexible gap filling and joint sealing.", image: U("1599619351208-3e6c839d6828") },
+      { name: "Tile Cleaner", description: "Removes stains and efflorescence from tile surfaces.", image: U("1584622781564-1d987f7333c1") },
+      { name: "Epoxy Grout", description: "High-strength stain-resistant grouting for joints.", image: U("1581244277943-fe4a9c777189") },
+      { name: "Wall Putty & Paints", description: "Interior and exterior finishing solutions.", image: U("1562259949-e8e7689d7828") },
     ],
   },
 ];
