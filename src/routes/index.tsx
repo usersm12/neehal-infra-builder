@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
-import { Award, Package, Truck, ArrowRight, Hammer, Wrench, ClipboardList } from "lucide-react";
+import { Award, Package, Truck, ArrowRight, Hammer, Wrench, ClipboardList, CheckCircle2, MapPin, ShieldCheck } from "lucide-react";
 import heroImg from "@/assets/hero-construction.jpg";
 
 const categoryHighlights = [
@@ -167,6 +167,93 @@ function HomePage() {
                 </Link>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT SECTION */}
+      <section className="bg-muted/40 py-20 md:py-28 border-y border-border">
+        <div className="container-tight">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-brand font-semibold uppercase text-xs tracking-wider">About us</span>
+              <h2 className="font-display font-extrabold text-3xl md:text-5xl text-charcoal mt-3 tracking-tight text-balance">
+                A trusted name for construction chemicals in Kutch
+              </h2>
+              <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+                <strong className="text-charcoal">Neehal Trade and Infra</strong> is the authorized dealer of <strong className="text-charcoal">Redwop Chemicals Pvt. Ltd.</strong> — an ISO 9001:2015 certified manufacturer of construction chemicals — serving builders, contractors and infrastructure projects across Gandhidham and the wider Kutch region.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                From foundation admixtures to final coatings, we stock the complete Redwop range and back it with local expertise, fair pricing, and on-time site delivery.
+              </p>
+
+              <div className="mt-8 grid sm:grid-cols-2 gap-4">
+                {[
+                  { Icon: ShieldCheck, text: "ISO 9001:2015 certified products" },
+                  { Icon: CheckCircle2, text: "25+ chemicals in stock" },
+                  { Icon: MapPin, text: "Based in Gandhidham, Kutch" },
+                  { Icon: Truck, text: "Reliable site delivery" },
+                ].map(({ Icon, text }) => (
+                  <div key={text} className="flex items-center gap-3">
+                    <div className="shrink-0 h-9 w-9 rounded-md bg-brand/10 text-brand flex items-center justify-center">
+                      <Icon className="h-4.5 w-4.5" />
+                    </div>
+                    <span className="text-sm font-semibold text-charcoal">{text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-2 bg-charcoal hover:bg-black text-white px-6 py-3 rounded-md font-semibold transition-all"
+                >
+                  More about us
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  to="/products"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-muted border border-border text-charcoal px-6 py-3 rounded-md font-semibold transition-all"
+                >
+                  View Products
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative"
+            >
+              <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-elegant border border-border bg-white">
+                <img
+                  src="https://www.redwop.net/wp-content/uploads/2024/07/redwop-story.jpg"
+                  alt="Redwop Chemicals manufacturing"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 hidden md:flex bg-brand text-brand-foreground px-6 py-5 rounded-lg shadow-elegant max-w-[16rem]">
+                <div>
+                  <div className="font-display font-extrabold text-3xl leading-none">5+ yrs</div>
+                  <div className="text-xs uppercase tracking-wider mt-2 opacity-90">Redwop manufacturing experience</div>
+                </div>
+              </div>
+              <div className="absolute -top-6 -right-6 hidden md:flex bg-white border border-border px-5 py-4 rounded-lg shadow-elegant items-center gap-3">
+                <Award className="h-7 w-7 text-brand" />
+                <div>
+                  <div className="font-display font-bold text-charcoal text-sm leading-tight">Authorized Dealer</div>
+                  <div className="text-xs text-muted-foreground">Redwop Chemicals Pvt. Ltd.</div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
