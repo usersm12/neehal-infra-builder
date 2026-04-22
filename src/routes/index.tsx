@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
 import { Award, Package, Truck, ArrowRight, Hammer, Wrench, ClipboardList, CheckCircle2, MapPin, ShieldCheck } from "lucide-react";
 import heroImg from "@/assets/hero-construction.jpg";
+import tileAdhesiveImg from "@/assets/tile-adhesive.jpg";
 
 const categoryHighlights = [
   {
@@ -13,7 +14,7 @@ const categoryHighlights = [
   {
     title: "Tile Adhesive & Grout",
     desc: "High-strength tile fixing solutions for walls, floors, and heavy-duty applications.",
-    image: "https://www.redwop.net/wp-content/uploads/2024/08/media_20241003_160242_8329776699937143088.png",
+    image: tileAdhesiveImg,
   },
   {
     title: "Waterproofing Chemicals",
