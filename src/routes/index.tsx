@@ -55,7 +55,7 @@ function HomePage() {
               <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
               Authorized Redwop Dealer · Gandhidham
             </div>
-            <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-balance">
+            <h1 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.05] text-balance">
               Your Trusted Construction Chemical Partner in Kutch
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
