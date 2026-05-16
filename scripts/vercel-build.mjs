@@ -52,17 +52,48 @@ writeFileSync(
     handler: 'index.mjs',
     launcherType: 'Nodejs',
     shouldAddHelpers: false,
-    supportsResponseStreaming: true,
   }, null, 2)
 )
 
-// Write entry wrapper
+// Write entry wrapper — converts Node.js (req, res) to Web Fetch API
 const entryPath = resolve(root, '_vercel_entry_tmp.mjs')
 writeFileSync(
   entryPath,
   `import { default as server } from './dist/server/server.js'
-export default async function handler(request) {
-  return server.fetch(request)
+import { Readable } from 'node:stream'
+
+export default async function handler(req, res) {
+  const protocol = req.headers['x-forwarded-proto'] || 'https'
+  const host = req.headers.host || 'localhost'
+  const url = new URL(req.url, protocol + '://' + host)
+
+  const headers = new Headers()
+  for (const [key, val] of Object.entries(req.headers)) {
+    if (val == null) continue
+    if (Array.isArray(val)) val.forEach(v => headers.append(key, v))
+    else headers.set(key, val)
+  }
+
+  const hasBody = !['GET', 'HEAD'].includes(req.method || 'GET')
+  const webRequest = new Request(url.toString(), {
+    method: req.method || 'GET',
+    headers,
+    body: hasBody ? Readable.toWeb(req) : null,
+    duplex: hasBody ? 'half' : undefined,
+  })
+
+  const webResponse = await server.fetch(webRequest)
+
+  res.statusCode = webResponse.status
+  for (const [key, val] of webResponse.headers.entries()) {
+    res.setHeader(key, val)
+  }
+
+  if (webResponse.body) {
+    Readable.fromWeb(webResponse.body).pipe(res)
+  } else {
+    res.end()
+  }
 }
 `
 )
@@ -82,7 +113,7 @@ await build({
   banner: {
     js: `import { createRequire as __createRequire } from 'node:module';\nconst require = __createRequire(import.meta.url);`,
   },
-  external: ['node:async_hooks', 'node:stream', 'node:buffer', 'node:util', 'node:path', 'node:fs', 'node:os', 'node:crypto', 'node:http', 'node:https', 'node:net', 'node:tls', 'node:url', 'node:zlib', 'node:events', 'node:querystring', 'node:string_decoder'],
+  external: ['node:async_hooks', 'node:stream', 'node:buffer', 'node:util', 'node:path', 'node:fs', 'node:os', 'node:crypto', 'node:http', 'node:https', 'node:net', 'node:tls', 'node:url', 'node:zlib', 'node:events', 'node:querystring', 'node:string_decoder', 'async_hooks', 'stream', 'buffer', 'util', 'path', 'fs', 'os', 'crypto', 'http', 'https', 'net', 'tls', 'url', 'zlib', 'events', 'querystring', 'string_decoder'],
   mainFields: ['module', 'main'],
   conditions: ['import', 'require', 'node'],
 })
