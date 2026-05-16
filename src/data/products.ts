@@ -12,6 +12,7 @@ export type ProductCategory = {
 };
 
 const P = "/images/products";
+const RW = "https://www.redwop.net/wp-content/uploads";
 
 export const productCategories: ProductCategory[] = [
   {
