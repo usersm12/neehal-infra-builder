@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
+import { ProductSlider } from "@/components/ProductSlider";
 import { Award, Package, Truck, ArrowRight, Hammer, Wrench, ClipboardList, CheckCircle2, MapPin, ShieldCheck } from "lucide-react";
 import heroImg from "@/assets/hero-construction.jpg";
 import tileAdhesiveImg from "@/assets/tile-adhesive.jpg";
@@ -102,6 +103,9 @@ function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* PRODUCT SLIDER */}
+      <ProductSlider />
 
       {/* TRUST BADGES */}
       <section className="bg-muted/50 border-y border-border">

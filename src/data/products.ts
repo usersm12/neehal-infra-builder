@@ -89,11 +89,11 @@ export const productCategories: ProductCategory[] = [
     slug: "others",
     intro: "Allied construction materials we supply alongside our Redwop chemical range.",
     products: [
-      { name: "Bitumen Membrane and Butyl Tape", description: "Self-adhesive aluminium-faced tape for sealing joints, flashings and leaks.", image: `${RW}/2024/11/Bituminous-Products.jpg` },
-      { name: "Fiber Recrones", description: "Polypropylene micro fibres for crack control and shrinkage resistance in concrete.", image: `${RW}/2024/11/Fiber-Mesh.jpg` },
-      { name: "Expansion Joint Board", description: "Bitumen-impregnated joint filler board for concrete expansion joints.", image: `${RW}/2024/11/Bituminous-Products.jpg` },
-      { name: "Fiber Mesh", description: "Alkali-resistant fiberglass mesh for plaster reinforcement and waterproofing.", image: `${RW}/2024/11/Fiber-Mesh.jpg` },
-      { name: "Backer Rod", description: "Closed-cell foam rod for backing sealants in expansion and construction joints.", image: `${RW}/2024/11/Liquid-Membrane-Waterproofing.jpg` },
+      { name: "Bitumen Membrane and Butyl Tape", description: "Self-adhesive aluminium-faced tape for sealing joints, flashings and leaks.", image: `${P}/BITUFLASH-2MM.png` },
+      { name: "Fiber Recrones", description: "Polypropylene micro fibres for crack control and shrinkage resistance in concrete.", image: `${P}/FIBER-GLASS-MESH-80-GSM.png` },
+      { name: "Expansion Joint Board", description: "Bitumen-impregnated joint filler board for concrete expansion joints.", image: `${P}/EXPA-G101.png` },
+      { name: "Fiber Mesh", description: "Alkali-resistant fiberglass mesh for plaster reinforcement and waterproofing.", image: `${P}/FIBER-GLASS-MESH-145-GSM.png` },
+      { name: "Backer Rod", description: "Closed-cell foam rod for backing sealants in expansion and construction joints.", image: `${P}/REDOSEAL.png` },
     ],
   },
 ];
