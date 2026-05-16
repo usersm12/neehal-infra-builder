@@ -1,28 +1,23 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { productCategories } from "@/data/products";
 
-const slides = [
-  { image: "/images/products/TERATILE-PLATIUM.png", name: "Tile Adhesive", category: "Tile Adhesive & Grout" },
-  { image: "/images/products/BLOCKFAST-AC100.png", name: "Accelerator", category: "Concrete Admixtures" },
-  { image: "/images/products/SMARZKOT-B2Flex.png", name: "2K Elastic Waterproofing", category: "Waterproofing Chemicals" },
-  { image: "/images/products/PLASTCONE-HS200.png", name: "Superplasticizer", category: "Concrete Admixtures" },
-  { image: "/images/products/POLYCOTE-WH100.png", name: "Crystalline Waterproofing", category: "Waterproofing Chemicals" },
-  { image: "/images/products/HARDFLOOR-N.png", name: "Floor Hardener", category: "Repair, Flooring & Specialty" },
-  { image: "/images/products/EISENGUARD-1.png", name: "Anti Corrosive", category: "Repair, Flooring & Specialty" },
-  { image: "/images/products/REDWOP-PU-200.png", name: "PU Liquid Membrane", category: "Waterproofing Chemicals" },
-];
+const allProducts = productCategories.flatMap((c) =>
+  c.products.filter((p) => p.image).map((p) => ({ ...p, category: c.title }))
+);
+
+const VISIBLE = 4;
 
 export function ProductSlider() {
-  const [current, setCurrent] = useState(0);
+  const [start, setStart] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
-      setCurrent((c) => (c + 1) % slides.length);
-    }, 3500);
+      setStart((s) => (s + 1) % allProducts.length);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -31,81 +26,57 @@ export function ProductSlider() {
   }, []);
 
   const go = (dir: number) => {
-    setCurrent((c) => (c + dir + slides.length) % slides.length);
+    setStart((s) => (s + dir + allProducts.length) % allProducts.length);
     startTimer();
   };
 
+  const visible = Array.from({ length: VISIBLE }, (_, i) => allProducts[(start + i) % allProducts.length]);
+
   return (
-    <section className="w-full bg-charcoal overflow-hidden">
-      <div className="relative w-full" style={{ aspectRatio: "16/7" }}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, scale: 1.03 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0"
-          >
-            <img
-              src={slides[current].image}
-              alt={slides[current].name}
-              className="w-full h-full object-contain bg-charcoal"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Caption */}
-        <div className="absolute bottom-0 left-0 right-0 px-6 py-6 md:px-12 md:py-8 flex items-end justify-between gap-4">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <p className="text-brand text-xs font-semibold uppercase tracking-wider mb-1">{slides[current].category}</p>
-              <h3 className="text-white font-display font-bold text-xl md:text-3xl">{slides[current].name}</h3>
-            </motion.div>
-          </AnimatePresence>
+    <div className="relative">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {visible.map((product, i) => (
           <Link
+            key={`${product.name}-${i}`}
             to="/products"
-            className="shrink-0 inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-brand-foreground px-5 py-2.5 rounded-md text-sm font-semibold transition-all"
+            className="group block bg-white border border-border rounded-lg overflow-hidden hover:shadow-elegant hover:border-brand/40 transition-all h-full"
           >
-            View All Products
+            <div className="aspect-square bg-muted overflow-hidden">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="p-5">
+              <p className="text-brand text-xs font-semibold uppercase tracking-wider mb-1">{product.category}</p>
+              <h3 className="font-display font-bold text-lg text-charcoal group-hover:text-brand transition-colors leading-tight">{product.name}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-2">{product.description}</p>
+            </div>
           </Link>
-        </div>
+        ))}
+      </div>
 
-        {/* Arrows */}
+      {/* Controls */}
+      <div className="flex items-center justify-center gap-4 mt-8">
         <button
           onClick={() => go(-1)}
-          className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all"
+          className="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted text-charcoal flex items-center justify-center transition-all"
           aria-label="Previous"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
+        <span className="text-sm text-muted-foreground">
+          {start + 1}–{((start + VISIBLE - 1) % allProducts.length) + 1} of {allProducts.length}
+        </span>
         <button
           onClick={() => go(1)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all"
+          className="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted text-charcoal flex items-center justify-center transition-all"
           aria-label="Next"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
-
-        {/* Dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => { setCurrent(i); startTimer(); }}
-              className={`h-1.5 rounded-full transition-all ${i === current ? "w-6 bg-brand" : "w-1.5 bg-white/40"}`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

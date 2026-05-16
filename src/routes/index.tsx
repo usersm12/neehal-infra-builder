@@ -175,13 +175,15 @@ function HomePage() {
 
       {/* FEATURED PRODUCTS SLIDER */}
       <section className="pb-20 md:pb-28">
-        <div className="container-tight mb-10">
-          <span className="text-brand font-semibold uppercase text-xs tracking-wider">Featured products</span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-charcoal mt-3 tracking-tight">
-            Our product range
-          </h2>
+        <div className="container-tight">
+          <div className="mb-10">
+            <span className="text-brand font-semibold uppercase text-xs tracking-wider">Featured products</span>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-charcoal mt-3 tracking-tight">
+              Our product range
+            </h2>
+          </div>
+          <ProductSlider />
         </div>
-        <ProductSlider />
       </section>
 
       {/* ABOUT SECTION */}
