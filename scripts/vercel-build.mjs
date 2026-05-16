@@ -79,6 +79,9 @@ await build({
   outdir: funcDir,
   outbase: root,
   ignoreAnnotations: true,
+  banner: {
+    js: `import { createRequire as __createRequire } from 'node:module';\nconst require = __createRequire(import.meta.url);`,
+  },
   external: ['node:async_hooks', 'node:stream', 'node:buffer', 'node:util', 'node:path', 'node:fs', 'node:os', 'node:crypto', 'node:http', 'node:https', 'node:net', 'node:tls', 'node:url', 'node:zlib', 'node:events', 'node:querystring', 'node:string_decoder'],
   mainFields: ['module', 'main'],
   conditions: ['import', 'require', 'node'],
