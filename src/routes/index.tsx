@@ -4,6 +4,30 @@ import { Layout } from "@/components/Layout";
 import { ProductSlider } from "@/components/ProductSlider";
 import { Award, Package, Truck, ArrowRight, Hammer, Wrench, ClipboardList, CheckCircle2, MapPin, ShieldCheck } from "lucide-react";
 import heroImg from "@/assets/hero-construction.jpg";
+import tileAdhesiveImg from "@/assets/tile-adhesive.jpg";
+
+const categoryHighlights = [
+  {
+    title: "Concrete Admixtures",
+    desc: "Accelerators, superplasticizers, water reducers, retarders and more for superior concrete performance.",
+    image: "https://www.redwop.net/wp-content/uploads/2024/11/Accelerator.jpg",
+  },
+  {
+    title: "Tile Adhesive & Grout",
+    desc: "High-strength tile fixing solutions for walls, floors, and heavy-duty applications.",
+    image: tileAdhesiveImg,
+  },
+  {
+    title: "Waterproofing Chemicals",
+    desc: "Liquid membranes, crystalline coatings, cement-based systems for lasting water protection.",
+    image: "https://www.redwop.net/wp-content/uploads/2024/11/Liquid-Membrane-Waterproofing.jpg",
+  },
+  {
+    title: "Protective Coatings",
+    desc: "Epoxy coatings, anti-corrosive primers, floor hardeners, and more for industrial protection.",
+    image: "https://www.redwop.net/wp-content/uploads/2024/11/Corrosion-Inhibiting-Admixture.jpg",
+  },
+];
 
 const trustBadges = [
   { Icon: Award, title: "Authorized Redwop Dealer", desc: "Genuine, certified products direct from the manufacturer." },
@@ -104,7 +128,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PRODUCT SLIDER */}
+      {/* PRODUCT CATEGORIES */}
       <section className="py-20 md:py-28">
         <div className="container-tight">
           <div className="max-w-2xl mb-12">
@@ -116,6 +140,46 @@ function HomePage() {
               From foundation to finish — every chemical you need, sourced from a trusted ISO-certified manufacturer.
             </p>
           </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {categoryHighlights.map((cat, i) => (
+              <motion.div
+                key={cat.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <Link
+                  to="/products"
+                  className="group block bg-white border border-border rounded-lg overflow-hidden hover:shadow-elegant hover:border-brand/40 transition-all h-full"
+                >
+                  <div className="aspect-square bg-muted overflow-hidden">
+                    <img
+                      src={cat.image}
+                      alt={cat.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display font-bold text-lg text-charcoal group-hover:text-brand transition-colors">{cat.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{cat.desc}</p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED PRODUCTS SLIDER */}
+      <section className="pb-20 md:pb-28">
+        <div className="container-tight mb-10">
+          <span className="text-brand font-semibold uppercase text-xs tracking-wider">Featured products</span>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-charcoal mt-3 tracking-tight">
+            Our product range
+          </h2>
         </div>
         <ProductSlider />
       </section>
