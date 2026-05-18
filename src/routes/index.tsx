@@ -44,12 +44,12 @@ function HomePage() {
         <div className="absolute inset-0 hero-overlay" />
         <div className="absolute inset-0 bg-grid opacity-30" />
 
-        <div className="container-tight relative py-24 md:py-36">
+        <div className="container-tight relative py-24 md:py-36 flex items-center justify-between gap-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand/50 bg-brand/15 text-white text-xs font-semibold uppercase tracking-wider mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
@@ -76,6 +76,19 @@ function HomePage() {
                 Contact Us
               </Link>
             </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="hidden lg:flex shrink-0 items-center justify-center"
+          >
+            <img
+              src="/images/redwop-logo-white.png"
+              alt="Redwop Chemicals"
+              className="w-64 xl:w-80 drop-shadow-2xl"
+            />
           </motion.div>
         </div>
       </section>
