@@ -7,7 +7,7 @@ const allProducts = productCategories.flatMap((c) =>
   c.products.filter((p) => p.image).map((p) => ({ ...p, category: c.title }))
 );
 
-const VISIBLE = 4;
+const VISIBLE = 8; // 2 rows × 4 cols
 
 export function ProductSlider() {
   const [start, setStart] = useState(0);
@@ -16,8 +16,8 @@ export function ProductSlider() {
   const startTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
-      setStart((s) => (s + 1) % allProducts.length);
-    }, 3000);
+      setStart((s) => (s + VISIBLE) % allProducts.length);
+    }, 4000);
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function ProductSlider() {
   }, []);
 
   const go = (dir: number) => {
-    setStart((s) => (s + dir + allProducts.length) % allProducts.length);
+    setStart((s) => (s + dir * VISIBLE + allProducts.length) % allProducts.length);
     startTimer();
   };
 
@@ -58,24 +58,34 @@ export function ProductSlider() {
       </div>
 
       {/* Controls */}
-      <div className="flex items-center justify-center gap-4 mt-8">
-        <button
-          onClick={() => go(-1)}
-          className="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted text-charcoal flex items-center justify-center transition-all"
-          aria-label="Previous"
+      <div className="flex items-center justify-between mt-8">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => go(-1)}
+            className="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted text-charcoal flex items-center justify-center transition-all"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <span className="text-sm text-muted-foreground">
+            {start + 1}–{((start + VISIBLE - 1) % allProducts.length) + 1} of {allProducts.length}
+          </span>
+          <button
+            onClick={() => go(1)}
+            className="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted text-charcoal flex items-center justify-center transition-all"
+            aria-label="Next"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+
+        <Link
+          to="/products"
+          className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-brand-foreground px-6 py-2.5 rounded-md font-semibold text-sm transition-all"
         >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <span className="text-sm text-muted-foreground">
-          {start + 1}–{((start + VISIBLE - 1) % allProducts.length) + 1} of {allProducts.length}
-        </span>
-        <button
-          onClick={() => go(1)}
-          className="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted text-charcoal flex items-center justify-center transition-all"
-          aria-label="Next"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
+          View All Products
+          <ChevronRight className="h-4 w-4" />
+        </Link>
       </div>
     </div>
   );
