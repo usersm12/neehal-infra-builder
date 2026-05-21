@@ -91,9 +91,9 @@ export const productCategories: ProductCategory[] = [
     products: [
       { name: "Bitumen Membrane and Butyl Tape", description: "Self-adhesive aluminium-faced tape for sealing joints, flashings and leaks.", image: `${P}/BITUFLASH-2MM.png` },
       { name: "Fiber Recrones", description: "Polypropylene micro fibres for crack control and shrinkage resistance in concrete.", image: `${P}/Fiber-Resa.jpg` },
-      { name: "Expansion Joint Board", description: "Bitumen-impregnated joint filler board for concrete expansion joints." },
+      { name: "Expansion Joint Board", description: "Bitumen-impregnated joint filler board for concrete expansion joints.", image: `${P}/Expansion-Joint-Board.png` },
       { name: "Fiber Mesh", description: "Alkali-resistant fiberglass mesh for plaster reinforcement and waterproofing.", image: `${P}/FIBER-GLASS-MESH-145-GSM.png` },
-      { name: "Backer Rod", description: "Closed-cell foam rod for backing sealants in expansion and construction joints." },
+      { name: "Backer Rod", description: "Closed-cell foam rod for backing sealants in expansion and construction joints.", image: `${P}/Backer-Rod.jpg` },
     ],
   },
 ];
