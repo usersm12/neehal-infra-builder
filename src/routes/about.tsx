@@ -5,7 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { CheckCircle2 } from "lucide-react";
 
 const reasons = [
-  { title: "Authorized Redwop Dealer", desc: "Genuine products, guaranteed quality." },
+  { title: "Authorized Redwop Distributor", desc: "Genuine products, guaranteed quality." },
   { title: "Wide Range", desc: "25+ construction chemical products always in stock." },
   { title: "Local Expertise", desc: "Serving Gandhidham and Kutch region." },
   { title: "Reliable Supply", desc: "On-time delivery to sites and contractors." },
@@ -14,10 +14,10 @@ const reasons = [
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Neehal Trade and Infra | Redwop Dealer in Gandhidham" },
-      { name: "description", content: "Neehal Trade and Infra is an authorized dealer of Redwop Chemicals Pvt. Ltd. based in Gandhidham, Kutch — serving contractors and builders across the region." },
+      { title: "About — Neehal Trade and Infra | Redwop Distributor in Gandhidham" },
+      { name: "description", content: "Neehal Trade and Infra is an authorized distributor of Redwop Chemicals Pvt. Ltd. based in Gandhidham, Kutch — serving contractors and builders across the region." },
       { property: "og:title", content: "About Neehal Trade and Infra" },
-      { property: "og:description", content: "Authorized Redwop dealer in Gandhidham, Kutch. Genuine products, local expertise, reliable supply." },
+      { property: "og:description", content: "Authorized Redwop distributor in Gandhidham, Kutch. Genuine products, local expertise, reliable supply." },
     ],
   }),
   component: AboutPage,
@@ -37,13 +37,13 @@ function AboutPage() {
             </h2>
             <div className="space-y-5 text-muted-foreground leading-relaxed">
               <p>
-                <strong className="text-charcoal">Neehal Trade and Infra</strong> is an authorized dealer of Redwop Chemicals Pvt. Ltd., one of India's leading construction chemical manufacturers. Based in Gandhidham, Kutch, we serve contractors, builders, and infrastructure projects across the region with a complete range of construction chemicals and building materials.
+                <strong className="text-charcoal">Neehal Trade and Infra</strong> is an authorized distributor of Redwop Chemicals Pvt. Ltd., one of India's leading construction chemical manufacturers. Based in Gandhidham, Kutch, we serve contractors, builders, and infrastructure projects across the region with a complete range of construction chemicals and building materials.
               </p>
               <p>
                 <strong className="text-charcoal">Redwop Chemicals Pvt. Ltd.</strong> is ISO 9001:2015 certified and has been in the business of construction chemicals for over five years, with a wide product range covering concrete admixtures, tile adhesives, waterproofing chemicals, curing compounds, epoxy grouts, industrial floor hardeners, and much more.
               </p>
               <p>
-                As an authorized dealer, we bring Redwop's proven products to local construction projects — with the added advantage of proximity, timely availability, and personal service.
+                As an authorized distributor, we bring Redwop's proven products to local construction projects — with the added advantage of proximity, timely availability, and personal service.
               </p>
             </div>
           </div>

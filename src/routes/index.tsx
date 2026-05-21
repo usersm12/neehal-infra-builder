@@ -6,7 +6,7 @@ import { Award, Package, Truck, ArrowRight, Hammer, Wrench, ClipboardList, Check
 import heroImg from "@/assets/hero-construction.jpg";
 
 const trustBadges = [
-  { Icon: Award, title: "Authorized Redwop Dealer", desc: "Genuine, certified products direct from the manufacturer." },
+  { Icon: Award, title: "Authorized Redwop Distributor", desc: "Genuine, certified products direct from the manufacturer." },
   { Icon: Package, title: "25+ Construction Chemicals", desc: "A wide product range always ready in stock." },
   { Icon: Truck, title: "Timely Site Delivery", desc: "Dependable supply to contractors across Kutch." },
 ];
@@ -20,9 +20,9 @@ const services = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Neehal Trade and Infra — Authorized Redwop Dealer in Gandhidham, Kutch" },
-      { name: "description", content: "Authorized dealer of Redwop Chemicals in Gandhidham, Kutch. Waterproofing, admixtures, tile adhesives, coatings and construction materials for builders and contractors." },
-      { property: "og:title", content: "Neehal Trade and Infra — Authorized Redwop Dealer" },
+      { title: "Neehal Trade and Infra — Authorized Redwop Distributor in Gandhidham, Kutch" },
+      { name: "description", content: "Authorized distributor of Redwop Chemicals in Gandhidham, Kutch. Waterproofing, admixtures, tile adhesives, coatings and construction materials for builders and contractors." },
+      { property: "og:title", content: "Neehal Trade and Infra — Authorized Redwop Distributor" },
       { property: "og:description", content: "Your trusted construction chemical partner in Kutch. Supplying waterproofing, admixtures, adhesives and coatings." },
     ],
   }),
@@ -53,13 +53,13 @@ function HomePage() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand/50 bg-brand/15 text-white text-xs font-semibold uppercase tracking-wider mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
-              Authorized Redwop Dealer · Gandhidham
+              Authorized Redwop Distributor · Gandhidham
             </div>
             <h1 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.05] text-balance">
               Your Trusted Construction Chemical Partner in Kutch
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
-              Authorized dealer of <span className="text-brand font-semibold">Redwop Chemicals</span> — supplying high-quality waterproofing, adhesives, admixtures, coatings, and more to contractors, builders, and projects across the region.
+              Authorized distributor of <span className="text-brand font-semibold">Redwop Chemicals</span> — supplying high-quality waterproofing, adhesives, admixtures, coatings, and more to contractors, builders, and projects across the region.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
@@ -148,7 +148,7 @@ function HomePage() {
                 A trusted name for construction chemicals in Kutch
               </h2>
               <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
-                <strong className="text-charcoal">Neehal Trade and Infra</strong> is the authorized dealer of <strong className="text-charcoal">Redwop Chemicals Pvt. Ltd.</strong> — an ISO 9001:2015 certified manufacturer of construction chemicals — serving builders, contractors and infrastructure projects across Gandhidham and the wider Kutch region.
+                <strong className="text-charcoal">Neehal Trade and Infra</strong> is the authorized distributor of <strong className="text-charcoal">Redwop Chemicals Pvt. Ltd.</strong> — an ISO 9001:2015 certified manufacturer of construction chemicals — serving builders, contractors and infrastructure projects across Gandhidham and the wider Kutch region.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 From foundation admixtures to final coatings, we stock the complete Redwop range and back it with local expertise, fair pricing, and on-time site delivery.
@@ -211,7 +211,7 @@ function HomePage() {
               <div className="absolute -top-6 -right-6 hidden md:flex bg-white border border-border px-5 py-4 rounded-lg shadow-elegant items-center gap-3">
                 <Award className="h-7 w-7 text-brand" />
                 <div>
-                  <div className="font-display font-bold text-charcoal text-sm leading-tight">Authorized Dealer</div>
+                  <div className="font-display font-bold text-charcoal text-sm leading-tight">Authorized Distributor</div>
                   <div className="text-xs text-muted-foreground">Redwop Chemicals Pvt. Ltd.</div>
                 </div>
               </div>

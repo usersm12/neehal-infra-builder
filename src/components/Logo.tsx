@@ -16,7 +16,7 @@ export function Logo({ variant = "dark" }: { variant?: "dark" | "light" }) {
           NEEHAL TRADE AND INFRA
         </span>
         <span className={`text-[11px] sm:text-sm font-semibold uppercase tracking-wider mt-1 ${subColor}`}>
-          Authorized Redwop Dealer
+          Authorized Redwop Distributor
         </span>
       </div>
     </Link>

@@ -7,7 +7,7 @@ import { productCategories } from "@/data/products";
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "Products — Neehal Trade and Infra | Redwop Chemicals Dealer" },
+      { title: "Products — Neehal Trade and Infra | Redwop Chemicals Distributor" },
       { name: "description", content: "Complete range of Redwop construction chemicals: concrete admixtures, waterproofing, tile adhesives, repair mortars, coatings and flooring solutions." },
       { property: "og:title", content: "Our Products — Neehal Trade and Infra" },
       { property: "og:description", content: "From concrete admixtures to waterproofing — every Redwop chemical you need, in stock in Gandhidham." },

@@ -26,12 +26,12 @@ export function Footer() {
             <div className="flex flex-col leading-none">
               <h3 className="font-display font-extrabold text-base tracking-tight">NEEHAL TRADE AND INFRA</h3>
               <p className="text-brand font-semibold text-xs uppercase tracking-wider mt-1.5">
-                Authorized Redwop Dealer
+                Authorized Redwop Distributor
               </p>
             </div>
           </div>
           <p className="text-sm text-white/60 mt-4 leading-relaxed">
-            Authorized Dealer — Redwop Chemicals Pvt. Ltd. Serving Gandhidham and Kutch region.
+            Authorized Distributor — Redwop Chemicals Pvt. Ltd. Serving Gandhidham and Kutch region.
           </p>
         </div>
 
